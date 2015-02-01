@@ -1,0 +1,29 @@
+<style> .thumbnail { width: 150px; }</style>
+
+<h1>Don't you want to travel??</h1>
+<p>We all remember places we've been.  We all dream of places we want to visit.</p>
+<p> Below are some pics from one place I've been: <strong>PERU!</strong></p>
+<p>But first here are places I'd like to visit:</p>
+<ul>
+	<% @destinations.each do |destination| %>
+		<li><%= destination.city %>, <%= destination.country %></li>
+	<% end %>
+</ul>
+
+<h2>Scenes from Peru</h2>
+<%= image_tag "peru1.jpg", alt: "Machu Picchu", class: "country" %>
+<%= image_tag "peru2.jpg", alt: "Lima", class: "country" %>
+<%= image_tag "peru3.jpg", alt: "Colca Valley", class: "country" %>
+<%= image_tag "peru4.jpg", alt: "Cordilleras Blanca", class: "country" %>
+<br>
+<br>
+<h2>Scenes using a Loop & Array</h2>
+	<%@images.each do |pic|%>
+		<%= image_tag pic, class: "thumbnail" %>  <!--class: pic (where pic is a defined style) -->
+	<%end%>
+
+
+<h2>Scenes using a Loop & Hash</h2>
+	<%@imageshash.each do |pic, label|%>
+		<%= image_tag pic, alt: label, class: "thumbnail" %>  <!--class: pic (where pic is a defined style) -->
+	<%end%>

@@ -1,0 +1,38 @@
+<% if notice != nil %>
+  <p id="notice" class="alert alert-success" role="alert"><%= notice %></p>
+<% end %>
+
+<h1>Most Wanted Destinations</h1>
+
+<ul class="nav nav-pills" role="tablist">
+  <li><%= link_to "All", destinations_path%></li>
+ <% @my_countries.each do |country| %>
+<li><%= link_to "#{country}", controller: "destinations", country: "#{country}"%></li>
+<% end %>
+</ul>
+
+<div class="row">
+    <% @destinations.each do |destination| %>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h1><%= destination.city %></h1>
+            <h2><%= destination.country %></h2>
+            <% if destination.avatar_file_name != nil %>
+              <%= image_tag destination.avatar.url(:medium) %>
+            <% end %>
+            <p><%= destination.description %></p>
+            <div class="btn-group">
+              <%= link_to 'Show', destination, class: "btn btn-default" %>
+              <%= link_to 'Edit', edit_destination_path(destination), class: "btn btn-default" %>
+              <%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Destination', new_destination_path, class: "btn btn-primary" %>

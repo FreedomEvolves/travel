@@ -1,0 +1,39 @@
+<style>
+  body {
+    background: <%= @color %>;
+  }
+</style>
+<div class="container">
+<h1>About me</h1>
+<p>Lots of interesting stuffs.</p>
+<%# http://0.0.0.0:3000/about?color=green passes in @color via controller%>
+<p>My favorite color is <%= @color %></p>
+<br>
+<%# http://0.0.0.0:3000/about?size=13 passes in @size via controller%>
+<% if @size > 12 %>
+<p>My shoe size is <%= @size %>.  I have HUGE feet! </p>
+<%else%>
+<h3> I wear regular size shoes. </h3>
+<%end%>
+<br>
+<br>
+<p> Message from contact page: <%= @message %></p>
+<table class="table">
+  <tr>
+    <% @united_states.each do |key,value| %>
+	  <th><%= key.titleize %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <% @united_states.each do |key,value| %>      
+      <% if value.kind_of?(Array) %>
+          <td><%= value.join(", ") %></td>
+      <% else %>
+         <td><%= value %></td>
+      <% end %> 
+    <% end %>
+  </tr>
+</table>
+</div
+
+

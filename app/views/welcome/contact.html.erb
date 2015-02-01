@@ -1,0 +1,41 @@
+<style>
+	#backgrnd {
+		background-color: <%= @color %>
+	}
+</style>
+
+<div id='backgrnd'>
+<h1>Contact Us</h1>
+<p> query param to drive welcome message on homepage</p> <%# done%>
+	<%# http://0.0.0.0:3000/contact?name=bill passes in @name via controller%>
+	<p>Welcome to the Contact Page, <%= @name %>!</p>
+	<%= @color %>
+
+<p>link from about->home to include a query string to show message "you came from about"</p><%# done%>
+<%= link_to "About", about_path(@message, :text => "you came from the contact page")%>
+<%= link_to "Home", root_path%>
+
+
+<p>secret feature to add more margin to the page via query param</p>
+
+
+
+
+<p>on the homepage, at the bottom, set of links with colors that refreshes the page into that bg color</p>
+
+<footer>
+	<div>
+	<u id="green">Green</u>
+		<u id="red">Red</u>
+	</div>
+</footer>
+</div>
+
+My fav color is: <%= @color %>
+
+session: <%= session[:color]%>
+
+
+
+
+

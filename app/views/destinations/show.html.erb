@@ -1,0 +1,29 @@
+<% if notice != nil %>
+	<p id="notice" class="alert alert-success" role="alert"><%= notice %></p>
+<% end %>
+
+<h1><%= @destination.city %>, <%= @destination.country %></h1>
+
+<%= image_tag @destination.avatar.url(:medium) %>
+
+<p><%= @destination.description %></p>
+<p><%= @destination.latitude%></p>
+<p><%= @destination.longitude%></p>
+
+<div class="btn-group">
+<%= link_to 'Edit', edit_destination_path(@destination), class: "btn btn-default" %> 
+<%= link_to 'Back', destinations_path, class: "btn btn-default" %>
+</div>
+
+<%= javascript_tag do%>
+	latitude = '<%= j @destination.latitude.to_s %>';
+	longitude = '<%= j @destination.longitude.to_s %>';
+	address = '<%= j @destination.address.to_s %>';
+	description = '<%= j @destination.description.to_s %>';
+<%end%>
+
+<div id="destination-map"></div>
+
+<br>
+<br>
+<br>
